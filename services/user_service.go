@@ -33,3 +33,24 @@ func (s *Server) CreateUser(ctx context.Context, req *pb.User) (*pb.User, error)
 		Email: result.Email,
 	}, nil
 }
+
+func (s *Server) GetAllUsers(ctx context.Context, req *pb.Empty) (*pb.UserList, error) {
+	users, err := repository.GetAllUsers()
+
+	if err != nil {
+		return nil, err
+	}
+	var userList []*pb.User
+
+	for _, user := range users {
+		userList = append(userList, &pb.User{
+			Id:    user.ID.Hex(),
+			Name:  user.Name,
+			Email: user.Email,
+		})
+	}
+
+	return &pb.UserList{
+		Users: userList,
+	}, nil
+}

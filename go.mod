@@ -3,10 +3,11 @@ module grpc-user-service-db
 go 1.25.0
 
 require (
+	github.com/joho/godotenv v1.5.1
 	go.mongodb.org/mongo-driver v1.17.9
 	google.golang.org/grpc v1.79.2
 	google.golang.org/protobuf v1.36.11
-	gopkg.in/mail.v2 v2.3.1
+	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
 )
 
 require (
